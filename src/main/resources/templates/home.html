@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="managerController"
+        lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Home page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+    <script src="../js/ManagerController.js"></script>
+
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+
+<body ng-app ng-controller="ManagerController as managerCtr" ng-init="managerCtr.list()">
+    <div>
+        <div class="w3-sidebar w3-bar-block w3-container" style="width:25%">
+            <h2 class="w3-bar-item w3-blue w3-round-large">Managers</h2>
+                <div class="sidebar-nav" ng-repeat="manager in managerCtr.managers">
+                    <a href="#" class="w3-bar-item w3-light-blue w3-button" ng-click="managerCtr.getComputers(manager.id, manager.name)">{{manager.name}}</a>
+                </div>
+        </div>
+
+        <div class="w3-container" style="margin-left:25%" ng-show=managerCtr.showComputers>
+
+            <div class="w3-blue w3-bar-block w3-round-large">
+                <h2 class="w3-bar-item">Computers for {{managerCtr.actualManager}}</h2>
+            </div>
+
+            <div>
+                <table class="w3-table-all w3-round-large">
+                    <thead>
+                    <tr>
+                        <th scope="col">Host Name</th>
+                        <th scope="col">IP Address</th>
+                        <th scope="col">MAC Address</th>
+                        <th scope="col">Room</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="computer in managerCtr.managerComputers" style="line-height:38px;">
+                        <td>{{computer.hostName}}</td>
+                        <td> <a href="#" ng-click="managerCtr.getRoom(computer.ipAddress)">{{computer.ipAddress}}</a></td>
+                        <td>{{computer.macAddress}}</td>
+                        <td>{{computer.socket.room}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div  ng-show="managerCtr.isIpAddressSelected" >
+                    <div class="w3-blue w3-bar-block w3-round-large">
+                        <h2 class="w3-bar-item">Computers in {{managerCtr.computerRoom}}</h2>
+                    </div>
+                    <ul class="w3-border w3-ul " ng-repeat="station in managerCtr.stations">
+                        <li>{{station}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

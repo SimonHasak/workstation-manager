@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="jdbc:h2:C:/Users/simon/Desktop/CRS-final/WorkstationManagerApplication/src/main/resources\data.sql" uuid="d11b2cb3-12f3-4edf-b16a-9412cb8be5a6">
+      <driver-ref>h2.unified</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.h2.Driver</jdbc-driver>
+      <jdbc-url>jdbc:h2:$PROJECT_DIR$/src/main/resources\data.sql</jdbc-url>
+    </data-source>
+  </component>
+</project>
